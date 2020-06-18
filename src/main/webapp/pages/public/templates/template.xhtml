@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>     
+        <title><ui:insert name="pageTitle"/> (#{facesContext.externalContext.contextName})</title>      
+        <ui:insert name="scriptSession"/>       
+        <ui:insert name="styleSession"/>        
+    </h:head>
+    <h:body>      
+        <h:form prependId="false" acceptcharset="UTF-8">
+            <p:messages id="notifications" showDetail="true" closable="true" escape="false">
+                <p:autoUpdate />
+            </p:messages>
+            <p:growl id="growl" showDetail="true" life="3000" escape="false"/>           
+            <div>
+                <div id="top" class="top">
+                    <ui:insert name="top">
+                        <ui:include src="header.xhtml"/>
+                    </ui:insert>
+                </div>
+                <div id="content" class="center_content">                       
+                    <p:panel header="#{panelTitle}">
+                        <ui:insert name="content"/>
+                        <ui:insert name="list"/>
+                    </p:panel>
+                </div>
+            </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="text-align: center">
+                <p:commandButton value="Ok" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>      
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />         
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="./images/progressbar.gif" />
+            </p:dialog>  
+            <p:dialog widgetVar="modalDialog" modal="false" resizable="true" responsive="true" closeOnEscape="true" id="pdReportViewer">
+                <p:scrollPanel style="max-height: 1024px">
+                    <ui:insert name="modalContent"/>
+                </p:scrollPanel>
+            </p:dialog>         
+        </h:form>
+    </h:body>
+
+</html>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<p:menubar xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://xmlns.jcp.org/jsf/html"
+           xmlns:p="http://primefaces.org/ui"
+           xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:submenu label="Menu">
+        <p:menuitem value="Auto de Infração" url="/cba/pages/private/autoinfracao/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Bem" url="/cba/pages/private/bem/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Vistoria do Bem" url="/cba/pages/private/bemvistoria/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Cidade" url="/cba/pages/private/cidade/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Estado de Conservação" url="/cba/pages/private/conservacao/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Destinação" url="/cba/pages/private/destinacao/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Unidade Federativa" url="/cba/pages/private/estado/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Pessoa" url="/cba/pages/private/pessoa/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Processo Administrativo" url="/cba/pages/private/processoadministrativo/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Rota de Vistoria" url="/cba/pages/private/rotavistoria/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Termo de Apreensão" url="/cba/pages/private/termoapreensao/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Termo de Depósito" url="/cba/pages/private/termodeposito/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Tipo de Bem" url="/cba/pages/private/tipobem/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Unidade Organizacional" url="/cba/pages/private/unidade/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Unidade de Medida" url="/cba/pages/private/unidademedida/index.xhtml" immediate="true"/>        
+        <p:menuitem value="Vistoria" url="/cba/pages/private/vistoria/index.xhtml" immediate="true"/>        
+    </p:submenu>
+    <f:facet name="options">
+        <p:outputLabel value="Controle de Bens Apreendidos" style="font-size: 14px; font-weight: bold"/>
+        <p:outputLabel value="#{loggedUser.nmManager}" style="font-weight: bold"/>
+        <p:spacer width="20"/>
+        <p:linkButton value="Sair" href="#{facesContext.externalContext.request.contextPath}/logout" icon="ui-icon-home"/>        
+    </f:facet>
+</p:menubar>

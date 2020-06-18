@@ -1,0 +1,17 @@
+#container-login {
+   margin:0 auto; 
+   background: url('../images/autenticacao-vermelho-final.png') no-repeat; 
+   height: 230px; 
+   width: 780px; 
+   top: 125px; 
+   position: relative;
+}
+
+#login {
+   width: 50%;
+   height: 50%;
+   overflow: auto;
+   margin: 0 auto;
+   position: absolute;
+   top: 0; left: 0; bottom: 0; right: 0;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="estelarPU" transaction-type="JTA">
+    <jta-data-source>java:/jdbc/estelar</jta-data-source>
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>br.gov.ibama.estelar.entity.Valor</class>
+    <class>br.gov.ibama.estelar.entity.TipoBem</class>
+    <class>br.gov.ibama.estelar.entity.ProcAdm</class>
+    <class>br.gov.ibama.estelar.entity.BemVistoria</class>
+    <class>br.gov.ibama.estelar.entity.ValorBem</class>
+    <class>br.gov.ibama.estelar.entity.Vistoria</class>
+    <class>br.gov.ibama.estelar.entity.RotaVistoria</class>
+    <class>br.gov.ibama.estelar.entity.TermoApreensao</class>
+    <class>br.gov.ibama.estelar.entity.Bem</class>
+    <class>br.gov.ibama.estelar.entity.UnidadeMedida</class>
+    <class>br.gov.ibama.estelar.entity.SubtipoBem</class>
+    <class>br.gov.ibama.estelar.entity.TermoDeposito</class>
+    <class>br.gov.ibama.estelar.entity.TipoDestinacao</class>
+    <class>br.gov.ibama.estelar.entity.AutoInfracao</class>
+    <class>br.gov.ibama.estelar.entity.Destinacao</class>
+    <class>br.gov.ibama.estelar.entity.Conservacao</class>
+    <class>br.gov.ibama.estelar.entity.Estado</class>
+    <class>br.gov.ibama.estelar.entity.Cidade</class>
+    <class>br.gov.ibama.estelar.entity.Pessoa</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+    </properties>
+  </persistence-unit>
+</persistence>
