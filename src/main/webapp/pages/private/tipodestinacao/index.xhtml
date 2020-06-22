@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:param name="panelTitle" value="Cadastro de Tipos de Destinações"/>
+    <ui:param name="pageController" value="#{tipoDestinacaoController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Tipos de Destinações
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Nome"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Ativo"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+    <ui:define name="list">
+        <p:row>
+            <p:column>
+                <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoNome}" required="true" requiredMessage="'Nome' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{!tipoDestinacaoController.entity.tipoDestinacao} : Sim ? Não"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+</ui:composition>
+ 
