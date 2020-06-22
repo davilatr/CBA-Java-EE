@@ -1,70 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../../public/templates/template.xhtml"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
     <ui:param name="panelTitle" value="Cadastro de Unidades de Medida"/>
+    <ui:param name="pageController" value="#{unidadeMedidaController}"/>
     <ui:define name="pageTitle">
         Cadastro de Unidades de Medida
     </ui:define>
-    <ui:define name="content">                
-        <p:panelGrid style="width: 100%" id="entityRow">
-            <p:row>
-                <p:column>
-                    <p:outputLabel value="ID"/>
-                </p:column>
-                <p:column>
-                    <p:outputLabel value="Descrição"/>
-                </p:column>                                     
-            </p:row> 
-            <p:row>
-                <p:column>
-                    <p:inputText value="#{unidadeMedidaController.entity.unidadeMedidaId}" disabled="true"/>
-                </p:column>                
-                <p:column>
-                    <p:inputText value="#{unidadeMedidaController.entity.unidade}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
-                </p:column>                
-            </p:row>
-            <p:row>
-                <p:column colspan="2">
-                    <p:commandButton value="Pesquisar" action="#{unidadeMedidaController.findAll()}" process="@this" icon="ui-icon-search" update="panelEntities"/>
-                    <p:commandButton value="Novo" action="#{unidadeMedidaController.newEntity()}" process="@this" icon="ui-icon-plus" update="@form"/>
-                    <p:commandButton value="Gravar" action="#{unidadeMedidaController.save()}" process="@form" icon="ui-icon-check" update="growl, dtEntities"/>             
-                    <p:commandButton value="Cancelar" action="#{unidadeMedidaController.newEntity()}" process="@this" icon="ui-icon-cancel" update="@form"/>             
-                </p:column>
-            </p:row>
-        </p:panelGrid>
+    <ui:define name="entityForm">            
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Descrição"/>
+            </p:column>                                     
+        </p:row> 
+        <p:row>
+            <p:column>
+                <p:inputText value="#{unidadeMedidaController.entity.unidadeMedidaId}" disabled="true"/>
+            </p:column>                
+            <p:column>
+                <p:inputText value="#{unidadeMedidaController.entity.unidade}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+            </p:column>                
+        </p:row>             
     </ui:define>
     <ui:define name="list">
-        <p:panel id="panelEntities">
-            <p:dataTable value="#{unidadeMedidaController.entityList}" var="entity" rows="15"
-                         id="dtEntities"
-                         paginator="true"
-                         widgetVar="entityList"
-                         rendered="#{not empty unidadeMedidaController.entityList}"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="1,5,10,15,25,50,75,100">
-                <f:facet name="header">
-                    <p:outputPanel style="text-align: right">
-                        <h:outputText value="Buscar todos os campos:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('entityList').filter()" style="width:150px" placeholder="Digite uma palavra"/>
-                    </p:outputPanel>
-                </f:facet>
-                <p:column headerText="ID" sortBy="#{entity.unidadeMedidaId}" filterBy="#{entity.unidadeMedidaId}" filterMatchMode="contains" style="text-align: center" width="10">
-                    <p:outputLabel value="#{entity.unidadeMedidaId}"/>
-                </p:column>
-                <p:column headerText="Descrição" sortBy="#{entity.unidade}" filterBy="#{entity.unidade}" filterMatchMode="contains" width="50">
-                    <p:outputLabel value="#{entity.unidade}"/>
-                </p:column>                         
-                <p:column style="text-align: center" width="15">
-                    <p:commandButton action="#{unidadeMedidaController.edit(entity)}" process="@this" update="entityRow" icon="ui-icon-pencil" title="Editar"/>
-                    <p:commandButton action="#{unidadeMedidaController.delete(entity)}" icon="ui-icon-trash" process="@this" update="dtEntities, growl" title="Excluir">
-                        <p:confirm header="Confirmação" message="Deseja realmente excluir a unidade de medida?" icon="pi pi-exclamation-triangle"/>
-                    </p:commandButton>
-                </p:column>        
-            </p:dataTable>
-        </p:panel>
+        <p:column headerText="ID" sortBy="#{entity.unidadeMedidaId}" filterBy="#{entity.unidadeMedidaId}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.unidadeMedidaId}"/>
+        </p:column>
+        <p:column headerText="Descrição" sortBy="#{entity.unidade}" filterBy="#{entity.unidade}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.unidade}"/>
+        </p:column>                                     
     </ui:define>
 </ui:composition>

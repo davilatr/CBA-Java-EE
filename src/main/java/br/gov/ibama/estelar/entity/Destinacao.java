@@ -52,9 +52,9 @@ public class Destinacao implements Serializable {
     @JoinColumn(name = "pessoa_id", referencedColumnName = "pessoa_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pessoa pessoaId;
-    @JoinColumn(name = "tipo_desticacao_id", referencedColumnName = "tipo_desticacao_id", nullable = false)
+    @JoinColumn(name = "tipo_destinacao_id", referencedColumnName = "tipo_destinacao_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private TipoDestinacao tipoDesticacaoId;
+    private TipoDestinacao tipoDestinacaoId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "destinacaoId", fetch = FetchType.LAZY)
     private List<Bem> bemList;
 
@@ -94,12 +94,12 @@ public class Destinacao implements Serializable {
         this.pessoaId = pessoaId;
     }
 
-    public TipoDestinacao getTipoDesticacaoId() {
-        return tipoDesticacaoId;
+    public TipoDestinacao getTipoDestinacaoId() {
+        return tipoDestinacaoId;
     }
 
-    public void setTipoDesticacaoId(TipoDestinacao tipoDesticacaoId) {
-        this.tipoDesticacaoId = tipoDesticacaoId;
+    public void setTipoDestinacaoId(TipoDestinacao tipoDestinacaoId) {
+        this.tipoDestinacaoId = tipoDestinacaoId;
     }
 
     public List<Bem> getBemList() {
@@ -134,5 +134,5 @@ public class Destinacao implements Serializable {
     public String toString() {
         return "br.gov.ibama.estelar.entidade.Destinacao[ destinacaoId=" + destinacaoId + " ]";
     }
-    
+
 }

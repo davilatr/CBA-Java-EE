@@ -31,18 +31,15 @@ import javax.validation.constraints.Size;
 @Table(name = "tipo_destinacao", catalog = "ibama", schema = "estelar", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"tipo_destinacao_nome"})})
 @NamedQueries({
-    @NamedQuery(name = "TipoDestinacao.findAll", query = "SELECT t FROM TipoDestinacao t"),
-    @NamedQuery(name = "TipoDestinacao.findByTipoDesticacaoId", query = "SELECT t FROM TipoDestinacao t WHERE t.tipoDesticacaoId = :tipoDesticacaoId"),
-    @NamedQuery(name = "TipoDestinacao.findByTipoDestinacaoNome", query = "SELECT t FROM TipoDestinacao t WHERE t.tipoDestinacaoNome = :tipoDestinacaoNome"),
-    @NamedQuery(name = "TipoDestinacao.findByTipoDestinacao", query = "SELECT t FROM TipoDestinacao t WHERE t.tipoDestinacao = :tipoDestinacao")})
+    @NamedQuery(name = "TipoDestinacao.findAll", query = "SELECT t FROM TipoDestinacao t")})
 public class TipoDestinacao implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "tipo_desticacao_id", nullable = false)
-    private Integer tipoDesticacaoId;
+    @Column(name = "tipo_destinacao_id", nullable = false)
+    private Integer tipoDestinacaoId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -52,28 +49,28 @@ public class TipoDestinacao implements Serializable {
     @NotNull
     @Column(name = "tipo_destinacao", nullable = false)
     private boolean tipoDestinacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDesticacaoId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDestinacaoId", fetch = FetchType.LAZY)
     private List<Destinacao> destinacaoList;
 
     public TipoDestinacao() {
     }
 
-    public TipoDestinacao(Integer tipoDesticacaoId) {
-        this.tipoDesticacaoId = tipoDesticacaoId;
+    public TipoDestinacao(Integer tipoDestinacaoId) {
+        this.tipoDestinacaoId = tipoDestinacaoId;
     }
 
-    public TipoDestinacao(Integer tipoDesticacaoId, String tipoDestinacaoNome, boolean tipoDestinacao) {
-        this.tipoDesticacaoId = tipoDesticacaoId;
+    public TipoDestinacao(Integer tipoDestinacaoId, String tipoDestinacaoNome, boolean tipoDestinacao) {
+        this.tipoDestinacaoId = tipoDestinacaoId;
         this.tipoDestinacaoNome = tipoDestinacaoNome;
         this.tipoDestinacao = tipoDestinacao;
     }
 
-    public Integer getTipoDesticacaoId() {
-        return tipoDesticacaoId;
+    public Integer getTipoDestinacaoId() {
+        return tipoDestinacaoId;
     }
 
-    public void setTipoDesticacaoId(Integer tipoDesticacaoId) {
-        this.tipoDesticacaoId = tipoDesticacaoId;
+    public void setTipoDestinacaoId(Integer tipoDestinacaoId) {
+        this.tipoDestinacaoId = tipoDestinacaoId;
     }
 
     public String getTipoDestinacaoNome() {
@@ -103,7 +100,7 @@ public class TipoDestinacao implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (tipoDesticacaoId != null ? tipoDesticacaoId.hashCode() : 0);
+        hash += (tipoDestinacaoId != null ? tipoDestinacaoId.hashCode() : 0);
         return hash;
     }
 
@@ -114,7 +111,7 @@ public class TipoDestinacao implements Serializable {
             return false;
         }
         TipoDestinacao other = (TipoDestinacao) object;
-        if ((this.tipoDesticacaoId == null && other.tipoDesticacaoId != null) || (this.tipoDesticacaoId != null && !this.tipoDesticacaoId.equals(other.tipoDesticacaoId))) {
+        if ((this.tipoDestinacaoId == null && other.tipoDestinacaoId != null) || (this.tipoDestinacaoId != null && !this.tipoDestinacaoId.equals(other.tipoDestinacaoId))) {
             return false;
         }
         return true;
@@ -122,7 +119,7 @@ public class TipoDestinacao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.gov.ibama.estelar.entidade.TipoDestinacao[ tipoDesticacaoId=" + tipoDesticacaoId + " ]";
+        return "br.gov.ibama.estelar.entidade.TipoDestinacao[ tipoDesticacaoId=" + tipoDestinacaoId + " ]";
     }
-    
+
 }

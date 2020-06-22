@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:param name="panelTitle" value="Cadastro de Destinações"/>
+    <ui:param name="pageController" value="#{destinacaoController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Destinações
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Data"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Tipo de Destinação"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Destinatário"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{destinacaoController.entity.destinacaoId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:calendar value="#{destinacaoController.entity.data}" pattern="dd/MM/yyyy" required="true" requiredMessage="'Data' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{destinacaoController.entity.tipoDestinacaoId}" converter="#{objectConverter}" required="true" requiredMessage="'Tipo de Destinação' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{destinacaoController.tipoDestinacaoList}" var="tipoDestinacao" itemLabel="#{tipoDestinacao.tipoDestinacaoNome}" itemValue="#{tipoDestinacao}"/>
+                </p:selectOneMenu>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{destinacaoController.entity.pessoaId}" converter="#{objectConverter}" filter="true" filterMatchMode="contains" styleClass="datatable-column">
+                    <f:selectItem itemValue="#{null}" itemLabel="Selecione o Destinatário" noSelectionOption="true"/>
+                    <f:selectItems value="#{destinacaoController.pessoaList}" var="pessoa" itemValue="#{pessoa}" itemLabel="#{pessoa.pessoaNome}"/>
+                    <p:ajax event="change" process="@this"/>
+                </p:selectOneMenu> 
+            </p:column>
+        </p:row>
+    </ui:define>
+    <ui:define name="list">
+        <p:column headerText="ID" sortBy="#{entity.destinacaoId}" filterBy="#{entity.destinacaoId}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.destinacaoId}"/>
+        </p:column>
+        <p:column headerText="Data" sortBy="#{entity.data}" filterBy="#{entity.data}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.data}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </p:outputLabel>
+        </p:column>                                     
+        <p:column headerText="Tipo de Destinação">
+            <p:outputLabel value="#{entity.tipoDestinacaoId.tipoDestinacaoNome}"/>
+        </p:column>
+        <p:column headerText="Destinatário">
+            <p:outputLabel value="#{entity.pessoaId.pessoaNome}"/>
+        </p:column>
+    </ui:define>
+</ui:composition>
