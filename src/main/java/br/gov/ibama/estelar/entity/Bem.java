@@ -35,7 +35,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Bem.findAll", query = "SELECT b FROM Bem b"),
     @NamedQuery(name = "Bem.findByBemId", query = "SELECT b FROM Bem b WHERE b.bemId = :bemId"),
-    @NamedQuery(name = "Bem.findByBemDescric\u00e3o", query = "SELECT b FROM Bem b WHERE b.bemDescric\u00e3o = :bemDescric\u00e3o"),
+    @NamedQuery(name = "Bem.findByBemDescricao", query = "SELECT b FROM Bem b WHERE b.bemDescricao = :bemDescricao"),
     @NamedQuery(name = "Bem.findByBemQuantidade", query = "SELECT b FROM Bem b WHERE b.bemQuantidade = :bemQuantidade"),
     @NamedQuery(name = "Bem.findByBemMarca", query = "SELECT b FROM Bem b WHERE b.bemMarca = :bemMarca"),
     @NamedQuery(name = "Bem.findByBemModelo", query = "SELECT b FROM Bem b WHERE b.bemModelo = :bemModelo"),

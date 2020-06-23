@@ -25,15 +25,19 @@
     </ui:define>
 
     <ui:define name="list">
+        <p:row>
         <p:column>
             <p:inputText value="#{tipoBemController.entity.tipoBemId}" disabled="true"/>
         </p:column>
         <p:column>
             <p:inputText value="#{tipoBemController.entity.tipoBemDesc}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
         </p:column>
+            <p:column>
         <p:selectOneMenu value="#{tipoBemController.entity.unidadeMedidaId}" converter="#{objectConverter}" required="true" requiredMessage="'Unidade de medida' é campo obrigatório!">
             <f:selectItem itemLabel="Selecione a unidade" itemValue="#{null}" noSelectionOption="true"/>
             <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidade}" itemValue="#{unidadeMedida}"/>
         </p:selectOneMenu>
+                </p:column>
+        </p:row>
     </ui:define>
 </ui:composition>
