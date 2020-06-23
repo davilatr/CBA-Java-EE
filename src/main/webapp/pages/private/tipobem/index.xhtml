@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:param name="panelTitle" value="Cadastro de Bens"/>
+    <ui:param name="pageController" value="#{tipoBemController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Tipos de Bem
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Descrição"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Unidade de medida"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+
+    <ui:define name="list">
+        <p:column>
+            <p:inputText value="#{tipoBemController.entity.tipoBemId}" disabled="true"/>
+        </p:column>
+        <p:column>
+            <p:inputText value="#{tipoBemController.entity.tipoBemDesc}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+        </p:column>
+        <p:selectOneMenu value="#{tipoBemController.entity.unidadeMedidaId}" converter="#{objectConverter}" required="true" requiredMessage="'Unidade de medida' é campo obrigatório!">
+            <f:selectItem itemLabel="Selecione a unidade" itemValue="#{null}" noSelectionOption="true"/>
+            <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidade}" itemValue="#{unidadeMedida}"/>
+        </p:selectOneMenu>
+    </ui:define>
+</ui:composition>
