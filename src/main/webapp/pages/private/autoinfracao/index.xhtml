@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:param name="panelTitle" value="Cadastro de Autos de Infração"/>
+    <ui:param name="pageController" value="#{autoInfracaoController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Autos de Infração
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="Número"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Lavrado?"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Transitado em Julgado?"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Data da autuação"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{autoInfracaoController.entity.autoInfracaoNumero}" required="true" requiredMessage="'Número do auto de infração' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:selectOneButton value="#{autoInfracaoController.entity.autoInfracaoSituacao}" required="true" requiredMessage="'Lavrado?' é campo obrigatório!">
+                    <f:selectItem itemLabel="Sim" itemValue="#{true}" />
+                    <f:selectItem itemLabel="Não" itemValue="#{false}" />                    
+                </p:selectOneButton>
+            </p:column>
+            <p:column>
+                <p:selectOneButton value="#{autoInfracaoController.entity.autoInfracaoTransJulgado}" required="true" requiredMessage="'Transitado em Julgado?' é campo obrigatório! ">
+                    <f:selectItem itemLabel="Sim" itemValue="#{true}" />
+                    <f:selectItem itemLabel="Não" itemValue="#{false}" />                    
+                </p:selectOneButton>
+            </p:column>
+            <p:column>
+                <p:calendar value="#{autoInfracaoController.entity.autoInfracaoData}" pattern="dd/MM/yyyy" required="true" requiredMessage="'Data da autuação' é campo obrigatório!"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+
+    <ui:define name="list">
+        <p:column headerText="Número" sortBy="#{entity.autoInfracaoNumero}" filterBy="#{entity.autoInfracaoNumero}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.autoInfracaoNumero}"/>
+        </p:column>
+        <p:column headerText="Lavrado?" sortBy="#{entity.autoInfracaoSituacao}" filterBy="#{entity.autoInfracaoSituacao}" filterMatchMode="exact" width="50">
+            <p:outputLabel value="#{entity.autoInfracaoSituacao eq true ? 'Sim' : 'Não'}"/>
+        </p:column> 
+        <p:column headerText="Transitado em julgado?" sortBy="#{entity.autoInfracaoTransJulgado}" filterBy="#{entity.autoInfracaoTransJulgado}" filterMatchMode="exact" width="50">
+            <p:outputLabel value="#{entity.autoInfracaoTransJulgado eq true ? 'Sim' : 'Não'}"/>
+        </p:column> 
+        <p:column headerText="Data da autuação" width="50">
+            <p:outputLabel value="#{entity.autoInfracaoData}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </p:outputLabel>
+        </p:column> 
+    </ui:define>
+
+</ui:composition>

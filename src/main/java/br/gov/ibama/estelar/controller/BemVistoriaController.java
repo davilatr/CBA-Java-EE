@@ -5,8 +5,11 @@
  */
 package br.gov.ibama.estelar.controller;
 
+import br.gov.ibama.estelar.entity.Bem;
 import br.gov.ibama.estelar.entity.BemVistoria;
+import br.gov.ibama.estelar.model.BemModel;
 import br.gov.ibama.estelar.model.BemVistoriaModel;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;

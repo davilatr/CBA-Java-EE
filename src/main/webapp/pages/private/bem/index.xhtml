@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:param name="panelTitle" value="Cadastro de Bens"/>
+    <ui:param name="pageController" value="#{bemController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Bens
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Descrição"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Quantidade"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Marca"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Modelo"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemDescricao}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:inputNumber value="#{bemController.entity.bemQuantidade}" required="true" requiredMessage="'Quantidade' é campo obrigatório!">
+                    <f:convertNumber integerOnly="true"/>
+                </p:inputNumber>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemMarca}" required="true" requiredMessage="'Marca' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemModelo}" required="true" requiredMessage="'Modelo' é campo obrigatório!"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:outputLabel value="Tipo"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Número de série"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Destinação"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Termo de apreensão"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Observação"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:selectOneMenu value="#{bemController.entity.tipoBemId}" converter="#{objectConverter}" required="true" requiredMessage="'Tipo' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione o tipo" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{bemController.tipoBemList}" var="tipoBem" itemLabel="#{tipoBem.tipoBemDesc}" itemValue="#{tipoBem}"/>
+                </p:selectOneMenu>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemSn}" required="true" requiredMessage="'Número de série' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{bemController.entity.destinacaoId}" converter="#{objectConverter}" required="true" requiredMessage="'Destinação' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione a destinação" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{bemController.destinacaoList}" var="destinacao" itemLabel="#{destinacao.tipoDestinacaoId.tipoDestinacaoNome}" itemValue="#{destinacao}"/>
+                </p:selectOneMenu>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{bemController.entity.termoApreensaoNumero}" converter="#{objectConverter}" required="true" requiredMessage="'Termo de apreensão' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione o termo de apreensão" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{bemController.termoApreensaoList}" var="termoApreensao" itemLabel="#{termoApreensao.termoApreensaoNumero}" itemValue="#{termoApreensao}"/>
+                </p:selectOneMenu>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{bemController.entity.bemObservacao}"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+
+    <ui:define name="list">
+        <p:column headerText="ID" sortBy="#{entity.bemId}" filterBy="#{entity.bemId}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.bemId}"/>
+        </p:column>
+        <p:column headerText="Descrição" sortBy="#{entity.bemDescricao}" filterBy="#{entity.bemDescricao}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.bemDescricao}"/>
+        </p:column> 
+        <p:column headerText="Marca" sortBy="#{entity.bemMarca}" filterBy="#{entity.bemMarca}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.bemMarca}"/>
+        </p:column> 
+        <p:column headerText="Modelo" sortBy="#{entity.bemModelo}" filterBy="#{entity.bemModelo}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.bemModelo}"/>
+        </p:column> 
+        <p:column headerText="Destinação">
+            <p:outputLabel value="#{entity.destinacaoId.tipoDestinacaoId.tipoDestinacaoNome}"/>
+        </p:column> 
+    </ui:define>
+
+</ui:composition>

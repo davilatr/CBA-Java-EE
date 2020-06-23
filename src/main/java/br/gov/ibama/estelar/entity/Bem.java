@@ -52,12 +52,12 @@ public class Bem implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
-    @Column(name = "bem_descric\u00e3o", nullable = false, length = 40)
-    private String bemDescricão;
+    @Column(name = "bem_descricao", nullable = false, length = 40)
+    private String bemDescricao;
     @Basic(optional = false)
     @NotNull
     @Column(name = "bem_quantidade", nullable = false)
-    private int bemQuantidade;
+    private Integer bemQuantidade;
     @Size(max = 40)
     @Column(name = "bem_marca", length = 40)
     private String bemMarca;
@@ -93,7 +93,7 @@ public class Bem implements Serializable {
 
     public Bem(Integer bemId, String bemDescricão, int bemQuantidade) {
         this.bemId = bemId;
-        this.bemDescricão = bemDescricão;
+        this.bemDescricao = bemDescricão;
         this.bemQuantidade = bemQuantidade;
     }
 
@@ -105,19 +105,19 @@ public class Bem implements Serializable {
         this.bemId = bemId;
     }
 
-    public String getBemDescricão() {
-        return bemDescricão;
+    public String getBemDescricao() {
+        return bemDescricao;
     }
 
-    public void setBemDescricão(String bemDescricão) {
-        this.bemDescricão = bemDescricão;
+    public void setBemDescricao(String bemDescricao) {
+        this.bemDescricao = bemDescricao;
     }
 
-    public int getBemQuantidade() {
+    public Integer getBemQuantidade() {
         return bemQuantidade;
     }
 
-    public void setBemQuantidade(int bemQuantidade) {
+    public void setBemQuantidade(Integer bemQuantidade) {
         this.bemQuantidade = bemQuantidade;
     }
 
