@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../public/templates/crud-template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:param name="panelTitle" value="Cadastro de Subtipos de Bens"/>
+    <ui:param name="pageController" value="#{subtipoBemController}"/>
+    <ui:define name="pageTitle">
+        Cadastro de Subtipos de Bens
+    </ui:define>
+    <ui:define name="entityForm">
+        <p:row>
+            <p:column>
+                <p:outputLabel value="ID"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Descrição"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Observações"/>
+            </p:column>
+            <p:column>
+                <p:outputLabel value="Tipo de bem"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+
+    <ui:define name="list">
+        <p:column headerText="ID" sortBy="#{entity.subtipoBemId}" filterBy="#{entity.subtipoBemId}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.subtipoBemId}"/>
+        </p:column>
+        <p:column headerText="Descrição" sortBy="#{entity.subtipoBemDesc}" filterBy="#{entity.subtipoBemDesc}" filterMatchMode="contains" style="text-align: center" width="10">
+            <p:outputLabel value="#{entity.subtipoBemDesc}"/>
+        </p:column>                                     
+        <p:column headerText="Observações">
+            <p:outputLabel value="#{entity.subtipoBemController.subtipoBemObs}"/>
+        </p:column>
+        <p:column headerText="Tipo de bem">
+            <p:outputLabel value="#{entity.tipoBemId}"/>
+        </p:column>
+    </ui:define>
+
+</ui:composition>
