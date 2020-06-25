@@ -20,6 +20,17 @@
                 <p:outputLabel value="Valor"/>
             </p:column>
         </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{valorBemController.entity.valorBemId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{valorBemController.entity.bemId}" required="true" requiredMessage="'Bem' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{valorBemController.entity.valorId}" required="true" requiredMessage="'Valor' é campo obrigatório!"/>
+            </p:column>
+        </p:row>
     </ui:define>
 
     <ui:define name="list">

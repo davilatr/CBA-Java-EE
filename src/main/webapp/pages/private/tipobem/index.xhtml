@@ -21,20 +21,30 @@
                 <p:outputLabel value="Unidade de medida"/>
             </p:column>
         </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{tipoBemController.entity.tipoBemId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{tipoBemController.entity.tipoBemDesc}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{tipoBemController.entity.unidadeMedidaId}" converter="#{objectConverter}" required="true" requiredMessage="'Unidade de medida' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione ..." itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidade}" itemValue="#{unidadeMedida}"/>
+                </p:selectOneMenu>
+            </p:column>
+        </p:row>
     </ui:define>
     <ui:define name="list">       
         <p:column headerText="ID" sortBy="#{entity.tipoBemId}" filterBy="#{entity.tipoBemId}" filterMatchMode="contains" style="text-align: center" width="10">
-            <p:inputText value="#{tipoBemController.entity.tipoBemId}" disabled="true"/>
+            <p:outputLabel value="#{entity.tipoBemId}"/>
         </p:column>
-        <p:column headerText="Descrição">
-            <p:inputText value="#{tipoBemController.entity.tipoBemDesc}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+        <p:column headerText="Descrição" sortBy="#{entity.tipoBemDesc}" filterBy="#{entity.tipoBemDesc}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.tipoBemDesc}"/>
         </p:column>
-        <p:column>
-            <p:selectOneMenu value="#{tipoBemController.entity.unidadeMedidaId}" converter="#{objectConverter}" required="true" requiredMessage="'Unidade de medida' é campo obrigatório!">
-                <f:selectItem itemLabel="Selecione a unidade" itemValue="#{null}" noSelectionOption="true"/>
-                <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidade}" itemValue="#{unidadeMedida}"/>
-                <p:ajax event="change" process="@this"/>
-            </p:selectOneMenu>
+        <p:column headerText="Unidade de medida">
+            <p:outputLabel value="#{entity.unidadeMedidaId.unidadeMedida.unidade}"/>
         </p:column>
     </ui:define>
 </ui:composition>

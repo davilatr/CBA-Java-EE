@@ -17,13 +17,21 @@
                 <p:outputLabel value="Valor"/>
             </p:column>
         </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{valorController.entity.valorId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{valorController.entity.valorDesc}" required="true" requiredMessage="'Valor' é campo obrigatório!"/>
+            </p:column>
+        </p:row>
     </ui:define>
 
     <ui:define name="list">
          <p:column headerText="ID" sortBy="#{entity.valorId}" filterBy="#{entity.valorId}" filterMatchMode="contains" style="text-align: center" width="10">
             <p:outputLabel value="#{entity.valorId}"/>
         </p:column>
-        <p:column headerText="Descrição" sortBy="#{entity.valorDesc}" filterBy="#{entity.valorDesc}" filterMatchMode="contains" style="text-align: center" width="10">
+        <p:column headerText="Valor" sortBy="#{entity.valorDesc}" filterBy="#{entity.valorDesc}" filterMatchMode="contains" width="50">
             <p:outputLabel value="#{entity.valorDesc}"/>
         </p:column> 
     </ui:define>

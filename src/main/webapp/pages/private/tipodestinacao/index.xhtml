@@ -15,25 +15,38 @@
                 <p:outputLabel value="ID"/>
             </p:column>
             <p:column>
-                <p:outputLabel value="Nome"/>
+                <p:outputLabel value="Tipo"/>
             </p:column>
             <p:column>
                 <p:outputLabel value="Ativo"/>
             </p:column>
         </p:row>
-    </ui:define>
-    <ui:define name="list">
         <p:row>
             <p:column>
                 <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoId}" disabled="true"/>
             </p:column>
             <p:column>
-                <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoNome}" required="true" requiredMessage="'Nome' é campo obrigatório!"/>
+                <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoNome}" required="true" requiredMessage="'Tipo' é campo obrigatório!"/>
             </p:column>
             <p:column>
-                <p:inputText value="#{!tipoDestinacaoController.entity.tipoDestinacao} : Sim ? Não"/>
+                <p:selectOneButton value="#{tipoDestinacaoController.entity.tipoDestinacao}" required="true" requiredMessage="'Ativo' é campo obrigatório!">
+                    <f:selectItem itemLabel="Sim" itemValue="#{true}" />
+                    <f:selectItem itemLabel="Não" itemValue="#{false}" />                    
+                </p:selectOneButton>
+            </p:column>
+        </p:row>
+    </ui:define>
+    <ui:define name="list">
+        <p:row>
+            <p:column headerText="ID" sortBy="#{entity.tipoDestinacaoId}" filterBy="#{entity.tipoDestinacaoId}" filterMatchMode="contains" style="text-align: center" width="10">>
+                <p:outputLabel value="#{entity.tipoDestinacaoId}"/>
+            </p:column>
+            <p:column headerText="Tipo" sortBy="#{entity.tipoDestinacaoNome}" filterBy="#{entity.tipoDestinacaoNome}" filterMatchMode="contains" width="50">>
+                <p:outputLabel value="#{entity.tipoDestinacaoNome}"/>
+            </p:column>
+            <p:column headerText="Ativo?" sortBy="#{entity.tipoDestinacao}" filterBy="#{entity.tipoDestinacao}" filterMatchMode="exact" width="50">
+                <p:outputLabel value="#{entity.tipoDestinacao eq true ? 'Sim' : 'Não'}"/>
             </p:column>
         </p:row>
     </ui:define>
 </ui:composition>
- 

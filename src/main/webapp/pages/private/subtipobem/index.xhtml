@@ -2,7 +2,8 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./../../public/templates/crud-template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:param name="panelTitle" value="Cadastro de Subtipos de Bens"/>
     <ui:param name="pageController" value="#{subtipoBemController}"/>
     <ui:define name="pageTitle">
@@ -16,11 +17,28 @@
             <p:column>
                 <p:outputLabel value="Descrição"/>
             </p:column>
-            <p:column>
+            <p:column>   
                 <p:outputLabel value="Observações"/>
             </p:column>
             <p:column>
                 <p:outputLabel value="Tipo de bem"/>
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <p:inputText value="#{subtipoBemController.entity.subtipoBemId}" disabled="true"/>
+            </p:column>
+            <p:column>
+                <p:inputText value="#{subtipoBemController.entity.subtipoBemDesc}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+            </p:column>
+            <p:column>   
+                <p:inputText value="#{subtipoBemController.entity.subtipoBemObs}"/>
+            </p:column>
+            <p:column>
+                <p:selectOneMenu value="#{subtipoBemController.entity.tipoBemId}" converter="#{objectConverter}" required="true" requiredMessage="'Tipo' é campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione ..." itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{bemController.tipoBemList}" var="tipoBem" itemLabel="#{tipoBem.tipoBemDesc}" itemValue="#{tipoBem}"/>
+                </p:selectOneMenu>
             </p:column>
         </p:row>
     </ui:define>
@@ -29,14 +47,11 @@
         <p:column headerText="ID" sortBy="#{entity.subtipoBemId}" filterBy="#{entity.subtipoBemId}" filterMatchMode="contains" style="text-align: center" width="10">
             <p:outputLabel value="#{entity.subtipoBemId}"/>
         </p:column>
-        <p:column headerText="Descrição" sortBy="#{entity.subtipoBemDesc}" filterBy="#{entity.subtipoBemDesc}" filterMatchMode="contains" style="text-align: center" width="10">
+        <p:column headerText="Descrição" sortBy="#{entity.subtipoBemDesc}" filterBy="#{entity.subtipoBemDesc}" filterMatchMode="contains" width="50">
             <p:outputLabel value="#{entity.subtipoBemDesc}"/>
         </p:column>                                     
         <p:column headerText="Observações">
-            <p:outputLabel value="#{entity.subtipoBemController.subtipoBemObs}"/>
-        </p:column>
-        <p:column headerText="Tipo de bem">
-            <p:outputLabel value="#{entity.tipoBemId}"/>
+            <p:outputLabel value="#{entity.subtipoBemObs}"/>
         </p:column>
     </ui:define>
 

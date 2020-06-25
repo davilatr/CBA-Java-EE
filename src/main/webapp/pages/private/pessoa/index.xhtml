@@ -15,10 +15,10 @@
                 <p:outputLabel value="ID"/>
             </p:column>
             <p:column>
-                <p:outputLabel value="Doc. Identificação"/>
+                <p:outputLabel value="Nome completo"/>
             </p:column>
             <p:column>
-                <p:outputLabel value="Nome"/>
+                <p:outputLabel value="Doc. Identificação"/>
             </p:column>
             <p:column>
                 <p:outputLabel value="Telefone"/>
@@ -31,22 +31,24 @@
             </p:column>
             <p:column>
                 <p:outputLabel value="Endereço"/>
+            </p:column>
         </p:row>
-    </ui:define>
-
-    <ui:define name="list">
         <p:row>
-            <p:column>
-                <p:inputText value="#{pessoaController.entity.pessoaId}" disabled="true"/>
+             <p:column>
+                 <p:inputText value="#{pessoaController.entity.pessoaId}"/>
             </p:column>
             <p:column>
-                <p:inputText value="#{pessoaController.entity.pessoaDocumentoIdentificacao}" required="true" requiredMessage="'Doc. Identificação' é campo obrigatório!"/>
+                <p:inputText value="#{pessoaController.entity.pessoaNome}" required="true" requiredMessage="'Nome completo' é campo obrigatório!"/>
             </p:column>
             <p:column>
-                <p:inputText value="#{pessoaController.entity.pessoaNome}" required="true" requiredMessage="'Nome' é campo obrigatório!"/>
+                <p:inputNumber value="#{pessoaController.entity.pessoaDocumentoIdentificacao}" required="true" requiredMessage="'Doc. Identificação' é campo obrigatório!">
+                    <f:convertNumber integerOnly="true"/>
+                </p:inputNumber>
             </p:column>
             <p:column>
-                <p:inputText value="#{pessoaController.entity.pessoaTelefone}" required="true" requiredMessage="'Telefone' é campo obrigatório!"/>
+                <p:inputNumber value="#{pessoaController.entity.pessoaTelefone}" required="true" requiredMessage="'Telefone' é campo obrigatório!">
+                    <f:convertNumber integerOnly="true"/>
+                </p:inputNumber>
             </p:column>
             <p:column>
                 <p:inputText value="#{pessoaController.entity.pessoaEmail}"/>
@@ -54,8 +56,34 @@
             <p:column>
                 <p:inputText value="#{pessoaController.entity.pessoaCep}"/>
             </p:column>
-             <p:column>
-                 <p:inputText value="#{pessoaController.entity.pessoaEndereco}" required="true" requiredMessage="'Endereço' é campo obrigatório!"/>
+            <p:column>
+                <p:inputText value="#{pessoaController.entity.pessoaEndereco}" required="true" requiredMessage="'Endereço' é campo obrigatório!"/>
+            </p:column>
+        </p:row>
+    </ui:define>
+
+    <ui:define name="list">
+        <p:row>
+            <p:column headerText="ID" sortBy="#{entity.pessoaId}" filterBy="#{entity.pessoaId}" filterMatchMode="contains" style="text-align: center" width="10">
+                <p:outputLabel value="#{entity.pessoaId}"/>
+            </p:column>
+            <p:column headerText="Nome completo" sortBy="#{entity.pessoaNome}" filterBy="#{entity.pessoaNome}" filterMatchMode="contains" style="text-align: center" width="100">
+                <p:outputLabel value="#{entity.pessoaNome}"/>
+            </p:column>
+            <p:column headerText="Doc. Identificação" sortBy="#{entity.pessoaDocumentoIdentificacao}" filterBy="#{entity.pessoaDocumentoIdentificacao}" filterMatchMode="contains" style="text-align: center" width="50">
+                <p:outputLabel value="#{entity.pessoaDocumentoIdentificacao}"/>
+            </p:column>
+            <p:column headerText="Telefone" sortBy="#{entity.pessoaTelefone}" filterBy="#{entity.pessoaTelefone}" filterMatchMode="contains" style="text-align: center" width="50">
+                <p:outputLabel value="#{entity.pessoaTelefone}"/>
+            </p:column>
+            <p:column headerText="e-mail" sortBy="#{entity.pessoaEmail}" filterBy="#{entity.pessoaEmail}" filterMatchMode="contains" style="text-align: center" width="50">
+                <p:outputLabel value="#{entity.pessoaEmail}"/>
+            </p:column>
+            <p:column headerText="CEP" sortBy="#{entity.pessoaCep}" filterBy="#{entity.pessoaCep}" filterMatchMode="contains" style="text-align: center" width="50">
+                <p:outputLabel value="#{entity.pessoaCep}"/>
+            </p:column>
+            <p:column headerText="Endereço" sortBy="#{entity.pessoaEndereco}" filterBy="#{entity.pessoaEndereco}" filterMatchMode="contains" style="text-align: center" width="50">
+                <p:outputLabel value="#{entity.pessoaEndereco}"/>
             </p:column>
         </p:row>
     </ui:define>
