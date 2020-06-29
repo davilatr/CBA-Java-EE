@@ -29,7 +29,7 @@
                 <p:inputText value="#{tipoDestinacaoController.entity.tipoDestinacaoNome}" required="true" requiredMessage="'Tipo' é campo obrigatório!"/>
             </p:column>
             <p:column>
-                <p:selectOneButton value="#{tipoDestinacaoController.entity.tipoDestinacao}" required="true" requiredMessage="'Ativo' é campo obrigatório!">
+                <p:selectOneButton value="#{tipoDestinacaoController.entity.tipoDestinacaoSituacao}" required="true" requiredMessage="'Ativo' é campo obrigatório!">
                     <f:selectItem itemLabel="Sim" itemValue="#{true}" />
                     <f:selectItem itemLabel="Não" itemValue="#{false}" />                    
                 </p:selectOneButton>
@@ -44,7 +44,7 @@
             <p:column headerText="Tipo" sortBy="#{entity.tipoDestinacaoNome}" filterBy="#{entity.tipoDestinacaoNome}" filterMatchMode="contains" width="50">>
                 <p:outputLabel value="#{entity.tipoDestinacaoNome}"/>
             </p:column>
-            <p:column headerText="Ativo?" sortBy="#{entity.tipoDestinacao}" filterBy="#{entity.tipoDestinacao}" filterMatchMode="exact" width="50">
+            <p:column headerText="Ativo?" sortBy="#{entity.tipoDestinacaoSituacao}" filterBy="#{entity.tipoDestinacaoSituacao}" filterMatchMode="exact" width="50">
                 <p:outputLabel value="#{entity.tipoDestinacao eq true ? 'Sim' : 'Não'}"/>
             </p:column>
         </p:row>

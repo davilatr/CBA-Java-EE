@@ -31,7 +31,7 @@
             <p:column>
                 <p:selectOneMenu value="#{tipoBemController.entity.unidadeMedidaId}" converter="#{objectConverter}" required="true" requiredMessage="'Unidade de medida' é campo obrigatório!">
                     <f:selectItem itemLabel="Selecione ..." itemValue="#{null}" noSelectionOption="true"/>
-                    <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidade}" itemValue="#{unidadeMedida}"/>
+                    <f:selectItems value="#{tipoBemController.unidadeMedidaList}" var="unidadeMedida" itemLabel="#{unidadeMedida.unidadeNome}" itemValue="#{unidadeMedida}"/>
                 </p:selectOneMenu>
             </p:column>
         </p:row>

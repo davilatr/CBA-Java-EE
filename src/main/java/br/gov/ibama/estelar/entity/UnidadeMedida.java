@@ -29,11 +29,11 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "unidade_medida", catalog = "ibama", schema = "estelar", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"unidade"})})
+    @UniqueConstraint(columnNames = {"unidade_nome"})})
 @NamedQueries({
     @NamedQuery(name = "UnidadeMedida.findAll", query = "SELECT u FROM UnidadeMedida u"),
     @NamedQuery(name = "UnidadeMedida.findByUnidadeMedidaId", query = "SELECT u FROM UnidadeMedida u WHERE u.unidadeMedidaId = :unidadeMedidaId"),
-    @NamedQuery(name = "UnidadeMedida.findByUnidade", query = "SELECT u FROM UnidadeMedida u WHERE u.unidade = :unidade")})
+    @NamedQuery(name = "UnidadeMedida.findByUnidadeNome", query = "SELECT u FROM UnidadeMedida u WHERE u.unidadeNome = :unidadeNome")})
 public class UnidadeMedida implements Serializable, Comparable<UnidadeMedida> {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +45,8 @@ public class UnidadeMedida implements Serializable, Comparable<UnidadeMedida> {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "unidade", nullable = false, length = 20)
-    private String unidade;
+    @Column(name = "unidade_nome", nullable = false, length = 20)
+    private String unidadeNome;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeMedidaId", fetch = FetchType.LAZY)
     private List<TipoBem> tipoBemList;
 
@@ -57,9 +57,9 @@ public class UnidadeMedida implements Serializable, Comparable<UnidadeMedida> {
         this.unidadeMedidaId = unidadeMedidaId;
     }
 
-    public UnidadeMedida(Integer unidadeMedidaId, String unidade) {
+    public UnidadeMedida(Integer unidadeMedidaId, String unidadeNome) {
         this.unidadeMedidaId = unidadeMedidaId;
-        this.unidade = unidade;
+        this.unidadeNome = unidadeNome;
     }
 
     public Integer getUnidadeMedidaId() {
@@ -70,12 +70,12 @@ public class UnidadeMedida implements Serializable, Comparable<UnidadeMedida> {
         this.unidadeMedidaId = unidadeMedidaId;
     }
 
-    public String getUnidade() {
-        return unidade;
+    public String getUnidadeNome() {
+        return unidadeNome;
     }
 
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
+    public void setUnidadeNome(String unidadeNome) {
+        this.unidadeNome = unidadeNome;
     }
 
     public List<TipoBem> getTipoBemList() {
@@ -113,7 +113,7 @@ public class UnidadeMedida implements Serializable, Comparable<UnidadeMedida> {
 
     @Override
     public int compareTo(UnidadeMedida t) {
-        return this.unidade.compareTo(t.unidade);
+        return this.unidadeNome.compareTo(t.unidadeNome);
     }
-    
+
 }

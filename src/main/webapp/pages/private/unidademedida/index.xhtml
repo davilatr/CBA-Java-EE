@@ -22,7 +22,7 @@
                 <p:inputText value="#{unidadeMedidaController.entity.unidadeMedidaId}" disabled="true"/>
             </p:column>                
             <p:column>
-                <p:inputText value="#{unidadeMedidaController.entity.unidade}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
+                <p:inputText value="#{unidadeMedidaController.entity.unidadeNome}" required="true" requiredMessage="'Descrição' é campo obrigatório!"/>
             </p:column>                
         </p:row>             
     </ui:define>
@@ -30,8 +30,8 @@
         <p:column headerText="ID" sortBy="#{entity.unidadeMedidaId}" filterBy="#{entity.unidadeMedidaId}" filterMatchMode="contains" style="text-align: center" width="10">
             <p:outputLabel value="#{entity.unidadeMedidaId}"/>
         </p:column>
-        <p:column headerText="Descrição" sortBy="#{entity.unidade}" filterBy="#{entity.unidade}" filterMatchMode="contains" width="50">
-            <p:outputLabel value="#{entity.unidade}"/>
+        <p:column headerText="Descrição" sortBy="#{entity.unidadeNome}" filterBy="#{entity.unidadeNome}" filterMatchMode="contains" width="50">
+            <p:outputLabel value="#{entity.unidadeNome}"/>
         </p:column>                                     
     </ui:define>
 </ui:composition>

@@ -47,8 +47,8 @@ public class TipoDestinacao implements Serializable {
     private String tipoDestinacaoNome;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "tipo_destinacao", nullable = false)
-    private boolean tipoDestinacao;
+    @Column(name = "tipo_destinacao_situacao", nullable = false)
+    private Boolean tipoDestinacaoSituacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDestinacaoId", fetch = FetchType.LAZY)
     private List<Destinacao> destinacaoList;
 
@@ -59,10 +59,10 @@ public class TipoDestinacao implements Serializable {
         this.tipoDestinacaoId = tipoDestinacaoId;
     }
 
-    public TipoDestinacao(Integer tipoDestinacaoId, String tipoDestinacaoNome, boolean tipoDestinacao) {
+    public TipoDestinacao(Integer tipoDestinacaoId, String tipoDestinacaoNome, boolean tipoDestinacaoSituacao) {
         this.tipoDestinacaoId = tipoDestinacaoId;
         this.tipoDestinacaoNome = tipoDestinacaoNome;
-        this.tipoDestinacao = tipoDestinacao;
+        this.tipoDestinacaoSituacao = tipoDestinacaoSituacao;
     }
 
     public Integer getTipoDestinacaoId() {
@@ -81,12 +81,12 @@ public class TipoDestinacao implements Serializable {
         this.tipoDestinacaoNome = tipoDestinacaoNome;
     }
 
-    public boolean getTipoDestinacao() {
-        return tipoDestinacao;
+    public Boolean getTipoDestinacaoSituacao() {
+        return tipoDestinacaoSituacao;
     }
 
-    public void setTipoDestinacao(boolean tipoDestinacao) {
-        this.tipoDestinacao = tipoDestinacao;
+    public void setTipoDestinacaoSituacao(Boolean tipoDestinacaoSituacao) {
+        this.tipoDestinacaoSituacao = tipoDestinacaoSituacao;
     }
 
     public List<Destinacao> getDestinacaoList() {

@@ -13,7 +13,7 @@
         <p:row>
             <p:commandButton value="Pesquisar" action="#{pageController.findAll()}" process="@this" icon="ui-icon-search" update="panelEntities"/>
             <p:commandButton value="Novo" action="#{pageController.newEntity()}" process="@this" icon="ui-icon-plus" update="@form"/>
-            <p:commandButton value="Gravar" action="#{pageController.save()}" process="@form" icon="ui-icon-check" update="growl, dtEntities"/>             
+            <p:commandButton value="Gravar" action="#{pageController.save()}" process="@form" icon="ui-icon-check" update="entityRow, growl, dtEntities"/>             
             <p:commandButton value="Cancelar" action="#{pageController.newEntity()}" process="@this" icon="ui-icon-cancel" update="@form"/>             
         </p:row>
         <p:panel id="panelEntities">

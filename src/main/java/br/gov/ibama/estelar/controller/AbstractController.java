@@ -108,6 +108,7 @@ public abstract class AbstractController<ENTITY> implements Serializable {
                 entityList.add(entity);
             }
             model.save(entity);
+            newEntity();
             infoSave();
         } catch (Exception e) {
             errorSave();
